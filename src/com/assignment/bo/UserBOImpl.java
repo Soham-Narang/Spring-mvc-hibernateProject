@@ -1,5 +1,7 @@
 package com.assignment.bo;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -105,7 +107,7 @@ public class UserBOImpl implements UserBO {
 		return null;
 	}
 
-	@Override
+//	@Transactional
 	public void addUser(User user) {
 		
 		System.out.println("UserBOImpl :addUser: Start ");

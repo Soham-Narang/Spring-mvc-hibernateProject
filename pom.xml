@@ -99,7 +99,20 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.22</version>
 	</dependency>
-			
+	
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>5.5.7.Final</version>
+	</dependency>
+  
+  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>5.3.12</version>
+	</dependency>
 		
   </dependencies>
   

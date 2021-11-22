@@ -1,12 +1,25 @@
 package com.assignment.vo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "details")
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	private int id;
 	
 	@NotNull(message = "first name cannot be empty")
 	@Size(min = 2,message = "first name less than 2 characters")
@@ -21,34 +34,41 @@ public class User {
 	@Pattern(regexp = "^[a-zA-Z][\\w -]*", message = "Middle Name must start with a letter. It can contain only letters, numbers, and Spaces, Hyphens (-), Underscores (_). Please enter a valid Middle Name.")
 	private String middleName;
 	
-	
-	private String gender;
-	
 	@NotNull(message = "address cannot be empty")
+	@Column
 	private String address ;
 	
 	@NotEmpty(message = "city cannot be empty")
 	@Pattern(regexp = "^[a-zA-Z][\\w -]*", message = "City can contain only letters, numbers, and Spaces, Hyphens (-), underscores (_). Please enter a valid City.")
+	@Column
 	private String city ;
 	
 	@NotEmpty(message = "Please specify state.")
+	@Column
 	private String state ;
 	
 	@NotEmpty(message = "Please specify country.")
+	@Column
 	private String country ;
 	
 	@Pattern(regexp = "[0-9]{10}", message = "Phone number contains 10 digits. Please enter a valid Phone number")
+	@Column(name = "pno")
 	private String phoneNumber ;
 	
+	@Column
 	private String bankName ;
+	
+	@Column(name = "bankaccount")
 	private String account ;
+	
 	private String ssn ;
 	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	@Column(name = "firstname")
 	public String getFirstName() {
 		return firstName;
 	}
@@ -56,7 +76,8 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
+	@Column(name = "lastname")
 	public String getLastName() {
 		return lastName;
 	}
@@ -64,21 +85,14 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
+	@Column(name = "middlename")
 	public String getMiddleName() {
 		return middleName;
 	}
 
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 	public String getAddress() {
@@ -148,7 +162,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "Info [firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName + ", gender="
-				+ gender + ", address=" + address + ", city=" + city + ", state=" + state + ", country=" + country
+			 + ", address=" + address + ", city=" + city + ", state=" + state + ", country=" + country
 				+ ", phoneNumber=" + phoneNumber + ", bankName=" + bankName + ", account=" + account + ", ssn=" + ssn
 				+ "]";
 	}

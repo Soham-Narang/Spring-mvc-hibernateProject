@@ -1,12 +1,15 @@
 package com.assignment.dao;
 
-import org.springframework.stereotype.Controller;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
+import com.apex.user.util.HibernateUtil;
 import com.assignment.vo.User;
 
-import dbaccess.MYSQLDBAccess;
+//import dbaccess.MYSQLDBAccess;
 
-@Controller
+@Repository
 public class UserDaoImpl implements UserDAO {
 
 	@Override
@@ -20,12 +23,16 @@ public class UserDaoImpl implements UserDAO {
 		
 		System.out.println("UserDAOImpl :addUser: Start ");
 		
-		try {
-			MYSQLDBAccess.createUser(user);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		/*
+		 * try { MYSQLDBAccess.createUser(user); } catch (Exception e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx =  session.beginTransaction();
+		session.save(user);
+		tx.commit();
+		session.close();
 		
 		System.out.println("UserDAOImpl :addUser: end");	
 
